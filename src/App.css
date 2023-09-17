@@ -78,6 +78,7 @@ body{
   border: none;
   /* border: 2px yellow solid; */
   background: none;
+  font-size: calc(0.9dvw + 0.9dvh);
 }
 
 .name-search > input::placeholder {
@@ -112,6 +113,7 @@ body{
   background: none;
   border-radius: 10px;
   border: 2px black solid;
+  font-size: calc(0.9dvw + 0.9dvh);
 }
 
 
