@@ -1,0 +1,75 @@
+.BookPage{
+    width: 70%;
+    height: calc((100dvh * 69) / 100);
+    
+    /* border: 2px greenyellow solid; */
+    margin: 0 auto;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .BookPage__card{
+    width: 45%;
+    height: 100%;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .BookPage__card>img{
+    width: 70%;
+    
+    
+  }
+  
+  .text-content{
+    /* border: 2px greenyellow solid; */
+    width: 50%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  
+  .text-content>h2,
+  .text-content>h3,
+  .text-content>h4{
+    font-size: clamp(5px, calc(2dvw + 2dvh), 120%);
+  } 
+  
+  .text-content>h4{
+    text-decoration: underline;
+    font-style: oblique;
+  }
+  
+  .BookPage__description{
+    border: 2px black solid;
+    border-radius: 10px;
+    width: 100%;
+    /* min-height: 300px; */
+    height: 50%;
+    font-size: clamp(5px, calc(1dvw + 1dvh), 100%);
+    overflow-y: scroll;
+  }
+  
+  .text-content>button{
+    height: 7%;
+    width: 20%;
+    background-color: rgb(19, 230, 19);
+    border-radius: 5px;
+    font-size: clamp(5px, calc(1dvw + 1dvh), 100%);
+  }
+
+  @media (max-width: 530px) {
+    .BookPage{
+        width: 100%;
+      }
+    
+    .text-content>button{
+        width: 100%;
+        height: 20%;
+      }
+  }
