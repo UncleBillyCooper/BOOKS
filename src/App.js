@@ -35,24 +35,10 @@ function App() {
       fetch(`https://www.googleapis.com/books/v1/volumes?q=${nameBook}+subject:${catagoryBook}&orderBy=${sortBook}&maxResults=30&startIndex=${startIndex}&key=AIzaSyA6hxjxZ79gS4TDP7_NhzFqNxMWQ6QNrQA`, requestOptions)
         .then(response => response.json())
         .then(
-          (result) => {
-            
+          (result) => {           
             // setTotalResult(result.totalItems);
-                        
-            result.items.forEach(element => {
-                  const book = {};
-                  book.nameB = element.volumeInfo.title;
-                  book.authorB = element.volumeInfo.authors;
-                  book.coverB = element.volumeInfo.imageLinks.thumbnail || Cover;
-                  book.catagoryB = element.volumeInfo.categories;
-                  book.description = element.volumeInfo.description || "описание отсутствует";
-                  book.id = element.id
-                  dispatch(actions.addToArrBooks(book))
-                });
-            
-            
-          }
-          )
+            dispatch(actions.addToArrBooks(result.items))            
+          })
         
         .catch(error => console.log('error', error));
       
@@ -67,7 +53,7 @@ function App() {
 
     async function start () {
       await clearing();
-      
+      await setStartIndex(0);
       await getBooks();
       await setStartIndex(startIndex + 30);
     };
@@ -121,7 +107,7 @@ function App() {
     {/* <h2>Найдено: {totalResult} книг</h2> */}
     <div className='card-list'>
     
-    {Object.keys(ArrayBOOKS).length === 0 ? 'Список пуст' : ArrayBOOKS.map(ArrayBOOK => <Book bookCover={ArrayBOOK.coverB} autor={ArrayBOOK.authorB} bookName={ArrayBOOK.nameB} bookCategory={ArrayBOOK.catagoryB} bookDesc={ArrayBOOK.description} bookID={ArrayBOOK.id} key={ArrayBOOK.id}/>)}
+    {Object.keys(ArrayBOOKS).length === 0 ? 'Список пуст' : ArrayBOOKS.map(ArrayBOOK => <Book bookCover={ArrayBOOK.coverB} autor={ArrayBOOK.authorB} bookName={ArrayBOOK.nameB} bookCategory={ArrayBOOK.catagoryB} bookDesc={ArrayBOOK.description} bookID={ArrayBOOK.id} key={ArrayBOOK.id+Math.random()}/>)}
     
     </div>
     <button onClick={oneMoreStart}>Загрузить еще</button>

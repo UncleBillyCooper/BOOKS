@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch/*, useSelector*/} from "react-redux";
 import { actions } from "../store/slices/currentBookSlice";
+import fakeCover from '../images/FakeCover.png'
 
 
 
@@ -20,7 +21,7 @@ function Selector () {
     return(
      
     <div className='card' onClick={Selector}>
-        <img src={props.bookCover || props.bookCoverFake} alt='какая-то картинка'/>
+        <img src={props.bookCover} alt='какая-то картинка'/>
         <p>{props.bookCategory}</p>
         <div className="bookName__box">
             <h2>{props.bookName}</h2>
