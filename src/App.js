@@ -13,7 +13,7 @@ function App() {
   
   const ArrayBOOKS = useSelector(state=>state.arrayBooks)
   const dispatch = useDispatch()
-  console.log(ArrayBOOKS)
+  // console.log(ArrayBOOKS)
 
   const [nameBook, setNameBook] = useState('');
   const [catagoryBook, setCategoryBook] = useState('');
@@ -104,7 +104,7 @@ function App() {
     </header>
     <div className='content-box'>
     
-    {/* <h2>Найдено: {totalResult} книг</h2> */}
+    {/* books<h2>Найдено: {totalResult} книг</h2> */}
     <div className='card-list'>
     
     {Object.keys(ArrayBOOKS).length === 0 ? 'Список пуст' : ArrayBOOKS.map(ArrayBOOK => <Book bookCover={ArrayBOOK.coverB} autor={ArrayBOOK.authorB} bookName={ArrayBOOK.nameB} bookCategory={ArrayBOOK.catagoryB} bookDesc={ArrayBOOK.description} bookID={ArrayBOOK.id} key={ArrayBOOK.id+Math.random()}/>)}

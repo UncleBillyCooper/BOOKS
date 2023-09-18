@@ -21,14 +21,10 @@ export const addArrayBooks = createSlice({
             state.push(book)
         });
     }
-        //  state.push(books)
-            console.log(books[0])
+        
        },
 
-        // removeBooks: (state,{payload: books})=>{
-        //     state.length = 0;
-        //     state.push(books)
-        // }
+        
         removeBooks: (state)=>{
             state.length = 0
             
