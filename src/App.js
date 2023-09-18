@@ -4,7 +4,7 @@ import './styles/BookAbout.css'
 import { useDispatch, useSelector} from "react-redux";
 import { actions } from "./store/slices/booksArr";
 
-import Cover from './images/FakeCover.png';
+
 import Book from './components/book';
 import Lupa from './images/lupa.png';
 import BookAbout from './components/aboutBook';
@@ -37,7 +37,16 @@ function App() {
         .then(
           (result) => {           
             // setTotalResult(result.totalItems);
-            dispatch(actions.addToArrBooks(result.items))            
+            dispatch(actions.addToArrBooks(result.items));
+            console.log(result.items.length);
+            if (result.items.length % 30 !==0 || result.items.length === 0) {
+              document.querySelector('.content-box > button').style.display = 'none';
+              document.querySelector('.content-box > h2').style.display = 'block';
+              setStartIndex(1)
+            } else {
+              document.querySelector('.content-box > button').style.display = 'block';
+              document.querySelector('.content-box > h2').style.display = 'none'
+            }           
           })
         
         .catch(error => console.log('error', error));
@@ -53,7 +62,7 @@ function App() {
 
     async function start () {
       await clearing();
-      await setStartIndex(0);
+      
       await getBooks();
       await setStartIndex(startIndex + 30);
     };
@@ -61,6 +70,7 @@ function App() {
     async function oneMoreStart () {
       await getBooks();
       await setStartIndex(startIndex + 30);
+      
     };
 
     
@@ -104,10 +114,10 @@ function App() {
     </header>
     <div className='content-box'>
     
-    {/* books<h2>Найдено: {totalResult} книг</h2> */}
+    <h2>Поиск завершен. По Вашему запросу найдено: {Object.keys(ArrayBOOKS).length} книг</h2>
     <div className='card-list'>
     
-    {Object.keys(ArrayBOOKS).length === 0 ? 'Список пуст' : ArrayBOOKS.map(ArrayBOOK => <Book bookCover={ArrayBOOK.coverB} autor={ArrayBOOK.authorB} bookName={ArrayBOOK.nameB} bookCategory={ArrayBOOK.catagoryB} bookDesc={ArrayBOOK.description} bookID={ArrayBOOK.id} key={ArrayBOOK.id+Math.random()}/>)}
+    {Object.keys(ArrayBOOKS).length === 0 ? <h3>Список пуст</h3> : ArrayBOOKS.map(ArrayBOOK => <Book bookCover={ArrayBOOK.coverB} autor={ArrayBOOK.authorB} bookName={ArrayBOOK.nameB} bookCategory={ArrayBOOK.catagoryB} bookDesc={ArrayBOOK.description} bookID={ArrayBOOK.id} key={ArrayBOOK.id+Math.random()}/>)}
     
     </div>
     <button onClick={oneMoreStart}>Загрузить еще</button>
