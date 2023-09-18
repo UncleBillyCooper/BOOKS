@@ -153,6 +153,8 @@ margin-bottom: 20px;
 .content-box h2{
 margin-top: 20px;
 display: none;
+font-size: calc(2dvw + 2dvh);
+text-align: center;
 }
 
 
