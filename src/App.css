@@ -219,9 +219,16 @@ text-align: center;
   margin: 10px 0px 10px 0px;
 }
 
+.bookName__box::-webkit-scrollbar {
+  display: none;
+  
+}
+
+
 .bookName__box>h2{
   display: block;
-  font-size: 20px;
+  /* font-size: calc(0.8dvw + 0.8dvh); */
+  font-size: clamp(20px, calc(0.8dvw + 0.8dvh), 100%);
 }
 
 .card p{
