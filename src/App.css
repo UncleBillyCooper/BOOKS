@@ -212,10 +212,16 @@ text-align: center;
 
 .bookName__box{
   width: 100%;
-  height: 20%;
+  height: calc(5dvw + 5dvh);
+  min-height: 46px;
   overflow-y: scroll;
   font-size: clamp(50%, calc(1.5dvw + 1.5dvh), 100%);
   margin: 10px 0px 10px 0px;
+}
+
+.bookName__box>h2{
+  display: block;
+  font-size: 20px;
 }
 
 .card p{
@@ -228,6 +234,7 @@ text-align: center;
   width: 90%;
   max-width: 350px;
   max-height: 400px;
+  height: 20vmax;
   align-self: center;
   /* box-shadow: 19px 19px 8px 0px rgba(34, 60, 80, 0.2); */
 }

@@ -13,7 +13,7 @@ function App() {
   
   const ArrayBOOKS = useSelector(state=>state.arrayBooks)
   const dispatch = useDispatch()
-  // console.log(ArrayBOOKS)
+  console.log(ArrayBOOKS[0]&&ArrayBOOKS[0].nameB)
 
   const [nameBook, setNameBook] = useState('');
   const [catagoryBook, setCategoryBook] = useState('');
@@ -38,7 +38,7 @@ function App() {
           (result) => {           
             // setTotalResult(result.totalItems);
             dispatch(actions.addToArrBooks(result.items));
-            console.log(result.items.length);
+            
             if (result.items.length % 30 !==0 || result.items.length === 0) {
               document.querySelector('.content-box > button').style.display = 'none';
               document.querySelector('.content-box > h2').style.display = 'block';
@@ -117,7 +117,7 @@ function App() {
     <h2>Поиск завершен. По Вашему запросу найдено: {Object.keys(ArrayBOOKS).length} книг</h2>
     <div className='card-list'>
     
-    {Object.keys(ArrayBOOKS).length === 0 ? <h3>Список пуст</h3> : ArrayBOOKS.map(ArrayBOOK => <Book bookCover={ArrayBOOK.coverB} autor={ArrayBOOK.authorB} bookName={ArrayBOOK.nameB} bookCategory={ArrayBOOK.catagoryB} bookDesc={ArrayBOOK.description} bookID={ArrayBOOK.id} key={ArrayBOOK.id+Math.random()}/>)}
+    {Object.keys(ArrayBOOKS).length === 0 ? <h3>Список пуст</h3> : ArrayBOOKS.map(ArrayBOOK => <Book bookCover={ArrayBOOK.coverB} autor={ArrayBOOK.authorB} bookName={ArrayBOOK&&ArrayBOOK.nameB} bookCategory={ArrayBOOK.catagoryB} bookDesc={ArrayBOOK.description} bookID={ArrayBOOK.id} key={ArrayBOOK.id+Math.random()}/>)}
     
     </div>
     <button onClick={oneMoreStart}>Загрузить еще</button>

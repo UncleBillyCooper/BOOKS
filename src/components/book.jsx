@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch/*, useSelector*/} from "react-redux";
 import { actions } from "../store/slices/currentBookSlice";
-import fakeCover from '../images/FakeCover.png'
+
+
 
 
 
@@ -9,13 +10,13 @@ import fakeCover from '../images/FakeCover.png'
 function BookItem(props) {
     // const currentBook = useSelector(state=>state.currentBook)
     const dispatch = useDispatch()
-    // console.log(currentBook) 
-
+   
 function Selector () {
     document.querySelector('.content-box').style.display = 'none' ;
     document.querySelector('.BookPage').style.display = 'flex';
     document.querySelector('.name-search>input').value = '';
     dispatch(actions.addBook(props))
+    
 }
 
     return(
@@ -23,6 +24,7 @@ function Selector () {
     <div className='card' onClick={Selector}>
         <img src={props.bookCover} alt='какая-то картинка'/>
         <p>{props.bookCategory}</p>
+        
         <div className="bookName__box">
             <h2>{props.bookName}</h2>
         </div>
